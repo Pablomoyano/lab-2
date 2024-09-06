@@ -11,4 +11,4 @@ Rails.application.routes.draw do
   get '/home', to: 'writter_pages#home'
   get '/about', to: 'writter_pages#about'
   get '/contact', to: 'writter_pages#contact'
-end
+  resources :posts

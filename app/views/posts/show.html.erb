@@ -1,0 +1,12 @@
+<div class="container">
+    <h1><%= @post.title %></h1>
+    <p><%= @post.content %></p>
+    <h2>Comments</h2>
+    <ul>
+    <% @post.comments.each do |comment| %>
+    <li><%= comment.content %></li>
+    <% end %>
+    </ul>
+
+<%= link_to 'Back to all posts', posts_path %>
+</div>
