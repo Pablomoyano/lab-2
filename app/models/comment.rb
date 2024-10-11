@@ -1,6 +1,8 @@
 class Comment < ApplicationRecord
   belongs_to :post
 
+  belongs_to :user
+
   validates :content, presence: true
   validates :author, presence: true
   validate :author_must_be_valid_user
