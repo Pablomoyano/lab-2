@@ -4,6 +4,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    
     # Define abilities for the user here. For example:
     #
     #   return unless user.present?
@@ -28,5 +29,18 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/blob/develop/docs/define_check_abilities.md
+    user ||= User.new # guest user
+
+    can :read, Post
+    can :read, Comment
+
+    if user.present?
+      can :create, Post
+      can :create, Comment
+      can :update, Post, user_id: user.id
+      can :update, Comment, user_id: user.id
+      can :destroy, Post, user_id: user.id
+      can :destroy, Comment, user_id: user.id
+    end
   end
 end
